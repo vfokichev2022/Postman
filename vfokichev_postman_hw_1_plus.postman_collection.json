@@ -174,12 +174,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/object_info_3?name={{name}}&age={{age}}&salary={{salary}}",
+					"raw": "{{url}}/object_info_4?name={{name}}&age={{age}}&salary={{salary}}",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"object_info_3"
+						"object_info_4"
 					],
 					"query": [
 						{

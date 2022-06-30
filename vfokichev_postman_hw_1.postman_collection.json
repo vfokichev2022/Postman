@@ -194,7 +194,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_3?name=Vova&age=35&salary=70000",
+					"raw": "http://162.55.220.72:5005/object_info_4?name=Vova&age=35&salary=70000",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -204,7 +204,7 @@
 					],
 					"port": "5005",
 					"path": [
-						"object_info_3"
+						"object_info_4"
 					],
 					"query": [
 						{
