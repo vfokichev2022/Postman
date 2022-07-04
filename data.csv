@@ -1,0 +1,25 @@
+name,age,salary
+"Pet",25,10000
+"qwertyuiopasdfghjklzxcvbnmqwertyuiopasdf",25,10000
+"Petya",18,10000
+"Petya",120,10000
+"Petya",25,1
+"Petya",25,1000000
+" Petya",25,10000
+"Petya ",25,10000
+"Petya Olga",25,10000
+"Ab",25,10000
+"qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfg",25,10000
+,25,10000
+0,25,10000
+"Petya",0,10000
+"Petya",-1,10000
+"Petya",17,10000
+"Petya",121,10000
+"Petya",,10000
+"Petya","a",10000
+"Petya",25,0
+"Petya",25,-1
+"Petya",25,1000001
+"Petya",25,
+"Petya",25,"a"
