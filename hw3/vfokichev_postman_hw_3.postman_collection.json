@@ -18,6 +18,7 @@
 							"const user_token = json_resp.token;\r",
 							"console.log(user_token);\r",
 							"\r",
+							"pm.environment.set(\"auth_token\", user_token);\r",
 							""
 						],
 						"type": "text/javascript"
@@ -49,6 +50,32 @@
 					],
 					"path": [
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"age\": {{age}},\r\n    \"salary\": {{salary}},\r\n    \"name\": \"{{name}}\",\r\n    \"auth_token\": \"{{User_token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user_info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info"
 					]
 				}
 			},
