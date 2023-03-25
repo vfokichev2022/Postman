@@ -181,7 +181,7 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"const new_info_schema = {\r",
+							"const new_data_schema = {\r",
 							"  \"type\": \"object\",\r",
 							"  \"properties\": {\r",
 							"    \"age\": {\r",
@@ -215,7 +215,7 @@
 							"let resp_json = pm.response.json();\r",
 							"\r",
 							"pm.test('JSON schema is valid', function () {\r",
-							"    pm.response.to.have.jsonSchema(new_info_schema);\r",
+							"    pm.response.to.have.jsonSchema(new_data_schema);\r",
 							"});\r",
 							"\r",
 							"let salary = +resp_json.salary[0];\r",
@@ -285,6 +285,101 @@
 					],
 					"path": [
 						"new_data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test_pet_info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const test_pet_info_schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"age\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"daily_food\": {\r",
+							"      \"type\": \"number\"\r",
+							"    },\r",
+							"    \"daily_sleep\": {\r",
+							"      \"type\": \"number\"\r",
+							"    },\r",
+							"    \"name\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"age\",\r",
+							"    \"daily_food\",\r",
+							"    \"daily_sleep\",\r",
+							"    \"name\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"let resp_json = pm.response.json();\r",
+							"let req_json = request.data;\r",
+							"let weight = +req_json.weight;\r",
+							"\r",
+							"pm.test('JSON schema is valid', function () {\r",
+							"    pm.response.to.have.jsonSchema(test_pet_info_schema);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"test daily_food = weight * 0.012\", function () {\r",
+							"    pm.expect(resp_json.daily_food).to.eql(weight * 0.012);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"test daily_sleep = weight * 2.5\", function () {\r",
+							"    pm.expect(resp_json.daily_sleep).to.eql(weight * 2.5);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "{{weight}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{auth_token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/test_pet_info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"test_pet_info"
 					]
 				}
 			},
