@@ -151,7 +151,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \r\n    \"age\": {{age}},\r\n    \"salary\": {{salary}},\r\n    \"name\": \"{{name}}\",\r\n    \"auth_token\": \"{{User_token}}\"\r\n}",
+					"raw": "{ \r\n    \"age\": {{age}},\r\n    \"salary\": {{salary}},\r\n    \"name\": \"{{name}}\",\r\n    \"auth_token\": \"{{auth_token}}\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -165,6 +165,126 @@
 					],
 					"path": [
 						"user_info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new_data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const new_info_schema = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"age\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"name\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"salary\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"string\"\r",
+							"        },\r",
+							"        {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      ]\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"age\",\r",
+							"    \"name\",\r",
+							"    \"salary\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"let resp_json = pm.response.json();\r",
+							"\r",
+							"pm.test('JSON schema is valid', function () {\r",
+							"    pm.response.to.have.jsonSchema(new_info_schema);\r",
+							"});\r",
+							"\r",
+							"let salary = +resp_json.salary[0];\r",
+							"let salary2 = +resp_json.salary[1];\r",
+							"let salary3 = +resp_json.salary[2];\r",
+							"\r",
+							"console.log(\"salary = \" + salary);\r",
+							"console.log(\"salary2 = \" + salary2);\r",
+							"console.log(\"salary3 = \" + salary3);\r",
+							"\r",
+							"pm.test(\"test salary * 2\", function () {\r",
+							"    pm.expect(salary2).to.eql(salary * 2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"test salary * 2\", function () {\r",
+							"    pm.expect(salary3).to.eql(salary * 3);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"test salary[2] > salary[0]\", function () {\r",
+							"    pm.expect(salary2 > salary);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"test salary[2] > salary[1]\", function () {\r",
+							"    pm.expect(salary3 > salary2);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{auth_token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/new_data",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"new_data"
 					]
 				}
 			},
