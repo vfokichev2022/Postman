@@ -492,7 +492,7 @@
 						},
 						{
 							"key": "salary",
-							"value": "{{salary}}",
+							"value": "{{salary_1_5}}",
 							"type": "text"
 						},
 						{
