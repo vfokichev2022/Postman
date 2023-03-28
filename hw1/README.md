@@ -24,7 +24,7 @@
 - Method: POST
 - EndPoint: /user_info_3
 - request form data: 
-- name: str
+  - name: str
   - age: int
   - salary: int
 
