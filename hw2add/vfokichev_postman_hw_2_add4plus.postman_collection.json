@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3f347715-a1e8-4d59-8b63-c7e626bc9775",
+		"_postman_id": "a1b8b890-3cbe-4837-b70b-6ff4e27ec0a6",
 		"name": "vfokichev_postman_hw_2_add4plus",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21443364"
@@ -13,8 +13,10 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"// начаало в Pre-request Script\r",
-							"\r",
+							"// http://162.55.220.72:5005/user_info_2\r",
+							"// 1. Вставить параметр salary из окружения в request\r",
+							"// 2. Вставить параметр age из окружения в age\r",
+							"// 3. Вставить параметр name из окружения в name\r",
 							"// 4. Отправить запрос.\r",
 							"// 5. Статус код 200\r",
 							"pm.test(\"Status code is 200\", function () {\r",
@@ -91,15 +93,6 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"// http://162.55.220.72:5005/user_info_2\r",
-							"// 1. Вставить параметр salary из окружения в request\r",
-							"request.data['salary'] = pm.environment.get('salary')\r",
-							"\r",
-							"// 2. Вставить параметр age из окружения в age\r",
-							"request.data['age'] = pm.environment.get('age')\r",
-							"\r",
-							"// 3. Вставить параметр name из окружения в name\r",
-							"request.data['name'] = pm.environment.get('name');\r",
 							""
 						],
 						"type": "text/javascript"
