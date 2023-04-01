@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e654dcb6-4206-43ac-8a0c-9f4ae0cdf24a",
+		"_postman_id": "b130f310-cbcd-49ee-b040-6961621bbc4e",
 		"name": "vfokichev_postman_hw_2_add1plus",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21443364"
@@ -17,7 +17,7 @@
 							"function validName(name) {\r",
 							"    if (typeof(name) != \"string\") {\r",
 							"        console.log(\"name not string\", name);\r",
-							"        return true\r",
+							"        return false\r",
 							"    }\r",
 							"    let r = true\r",
 							"    let name_len = name.length\r",
@@ -68,6 +68,7 @@
 							"    return r1 && r2 && r3\r",
 							"}\r",
 							"\r",
+							"console.log(\"iteration\", pm.info.iteration+1);\r",
 							"let name = pm.iterationData.get(\"name\");\r",
 							"let age = pm.iterationData.get(\"age\");\r",
 							"let salary = pm.iterationData.get(\"salary\");\r",
